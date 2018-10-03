@@ -1,0 +1,54 @@
+
+<div class="container">
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <input type="text" class="form-control" placeholder="First Name" ngModel name="firstName">
+    <br>
+    <input type="text" class="form-control" placeholder="Last Name" ngModel name="lastName">
+    <br>
+    <input type="text" class="form-control" placeholder="Mobile No" ngModel name="phoneNo">
+    <br>
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<div>
+  <br>
+</div>
+</div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+<div class="panel panel-primary">
+    <div class="panel-heading">Complaints Data</div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>PhoneNo</th>
+                <th>Address</th>
+                <th>Complaint Data</th>
+                <th>Worker Assigned</th>
+                <th>Opened Date</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf = "!isData" style="width: 100px;">
+                  NO DATA TO DISPLAY
+              </tr>
+              <tr *ngFor="let d of allData">
+                <td>{{d.id}}</td>
+                <td>{{d.firstName}}</td>
+                <td>{{d.lastName}}</td>
+                <td>{{d.phoneNo}}</td>
+                <td>{{d.address}}</td>
+                <td>{{d.complaintData}}</td>
+                <td>{{d.workerAssigned}}</td>
+                <td>{{d.openedDateTime}}</td>
+                <td>
+                    <a href="/edit/{{d.id}}">Edit</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
