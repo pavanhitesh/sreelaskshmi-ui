@@ -5,31 +5,63 @@
     </div>
   </div>
   <div *ngIf="isError">
-      <div class="alert alert-danger">
-        <strong>Failure!</strong> {{errorMessage}}
-      </div>
+    <div class="alert alert-danger">
+      <strong>Failure!</strong> {{errorMessage}}
     </div>
+  </div>
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
   <form name="form" (ngSubmit)="onSubmit(d)" #d="ngForm" novalidate>
-    <input type="text" class="form-control" placeholder="First Name" ngModel name="firstName" required="">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-user"></i>
+      </span>
+      <input type="text" class="form-control" placeholder="First Name" ngModel name="firstName" required="">
+    </div>
     <div>
       <div>* First Name is Mandatory</div>
     </div>
     <br>
-    <input type="text" class="form-control" placeholder="Last Name" ngModel name="lastName">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-user"></i>
+      </span>
+      <input type="text" class="form-control" placeholder="Last Name" ngModel name="lastName">
+    </div>
     <br>
-    <textarea type="text" class="form-control" placeholder="Address" ngModel name="address">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-home"></i>
+      </span>
+      <textarea type="text" class="form-control" placeholder="Address" ngModel name="address">
       </textarea>
+    </div>
     <br>
-    <input type="text" class="form-control" placeholder="Mobile No" ngModel name="phoneNo" required="">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-phone"></i>
+      </span>
+      <input type="text" class="form-control" placeholder="Mobile No" ngModel name="phoneNo" required="">
+    </div>
     <div ng-show="form.phoneNo.$error.required">* Mobile No is Mandatory</div>
     <br>
-    <input type="text" class="form-control" placeholder="Complaint Data" ngModel name="complaintData">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-leaf"></i>
+      </span>
+      <input type="text" class="form-control" placeholder="Complaint Data" ngModel name="complaintData">
+    </div>
     <br>
-    <input type="text" class="form-control" placeholder="Worker Assigned" ngModel name="workerAssigned">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-user"></i>
+      </span>
+      <input type="text" class="form-control" placeholder="Worker Assigned" ngModel name="workerAssigned">
+    </div>
     <div>
       <br>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-save"></span>
+        Save</button>
   </form>
 </div>
