@@ -4,33 +4,39 @@
       <strong>Updated!</strong> Complaint Sucessfuly Updated.
     </div>
   </div>
+  <div *ngIf="isError">
+    <div class="alert alert-danger">
+      <strong>Failure!</strong> {{errorMessage}}
+    </div>
+  </div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
   <form (ngSubmit)="onSubmit(e)" #e="ngForm">
       <div class="input-group">
           <span class="input-group-addon">
             <i class="glyphicon glyphicon-asterisk"></i>
           </span>
-    <input type="text" class="form-control" placeholder="ID" ngModel name="id" value= {{editData.id}} readonly>
+    <input type="text" class="form-control" placeholder="ID" [(ngModel)] = "editData.id"  name="id"  readonly>
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-user"></i>
       </span>
-      <input type="text" class="form-control" placeholder="First Name" ngModel name="firstName" value=  {{editData.firstName}}>
+      <input type="text" class="form-control" placeholder="First Name" [(ngModel)] = "editData.firstName" name="firstName">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-user"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Last Name" ngModel name="lastName" value= {{editData.lastName}}>
+      <input type="text" class="form-control" placeholder="Last Name" [(ngModel)] = "editData.lastName" name="lastName">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-home"></i>
       </span>
-      <textarea type="text" class="form-control" placeholder="Address" ngModel name="address" value= {{editData.address}}>
+      <textarea type="text" class="form-control" placeholder="Address" [(ngModel)] = "editData.address" name="address">
       </textarea>
     </div>
     <br>
@@ -38,27 +44,34 @@
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-phone"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Mobile No" ngModel name="phoneNo" value= {{editData.phoneNo}}>
+      <input type="text" class="form-control" placeholder="Mobile No" [(ngModel)] = "editData.phoneNo" name="phoneNo">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-leaf"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Complaint Data" ngModel name="complaintData" 
-      value= {{editData.complaintData}}>
+      <input type="text" class="form-control" placeholder="Complaint Data" [(ngModel)]="editData.complaintData" name="complaintData">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-user"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Worker Assigned" ngModel name="workerAssigned" 
-      value= {{editData.workerAssigned}}>
+      <input type="text" class="form-control" placeholder="Worker Assigned" [(ngModel)]="editData.workerAssigned" name="workerAssigned">
     </div>
     <div>
       <br>
     </div>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-calendar"></i>
+      </span>
+      <input type="date" class="form-control" [(ngModel)] = "editData.closedDate" name ="closedDate" #closedDate="ngModel"
+      placeholder="Closed date"/>
+    </div>
+    <br>
+
     <button type="submit" class="btn btn-primary">
         <span class="glyphicon glyphicon-save"></span>
         Update</button>

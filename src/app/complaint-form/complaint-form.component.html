@@ -10,15 +10,15 @@
     </div>
   </div>
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
-  <form name="form" (ngSubmit)="onSubmit(d)" #d="ngForm" novalidate>
+  <form name="myForm" (ngSubmit)="onSubmit(d)" #d="ngForm" novalidate>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-user"></i>
       </span>
-      <input type="text" class="form-control" placeholder="First Name" ngModel name="firstName" required="">
+      <input type="text" class="form-control" placeholder="First Name" ngModel name="firstName" required #firstName="ngModel">
     </div>
-    <div>
-      <div>* First Name is Mandatory</div>
+    <div *ngIf="!firstName.valid">
+      <div >* First Name is Mandatory</div>
     </div>
     <br>
     <div class="input-group">
@@ -40,10 +40,10 @@
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-phone"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Mobile No" ngModel name="phoneNo" required="">
+      <input type="text" class="form-control" placeholder="Mobile No" ngModel name="phoneNo" required #phoneNo="ngModel">
     </div>
-    <div ng-show="form.phoneNo.$error.required">* Mobile No is Mandatory</div>
-    <br>
+    <div *ngIf="!phoneNo.valid">* Mobile No is Mandatory</div>
+    <br> 
     <div class="input-group">
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-leaf"></i>
@@ -60,6 +60,7 @@
     <div>
       <br>
     </div>
+    
     <button type="submit" class="btn btn-primary">
         <span class="glyphicon glyphicon-save"></span>
         Save</button>

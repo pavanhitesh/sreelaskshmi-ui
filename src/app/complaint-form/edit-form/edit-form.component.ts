@@ -11,6 +11,9 @@ import {EditFormData} from './edit-form.component.service';
 })
 export class EditFormComponent implements OnInit {
 
+  public loading = false;
+  public isError = false;
+  public errorMessage;
   public editData:any={};
   public updatedData: any = {};
   public id;
@@ -27,7 +30,7 @@ export class EditFormComponent implements OnInit {
 
 
   public onSubmit(form:NgForm){
-    if(!form.invalid){
+    if(!form.invalid && form.touched){
       console.log(form);
       this.updatedData = form.value;
       this.updatedData.id = this.id;
@@ -40,6 +43,10 @@ export class EditFormComponent implements OnInit {
       }).catch((err)=>{
         console.log(err);
       });
+    }else{
+      this.loading = false;
+      this.isError = true;
+      this.errorMessage = "Please Change any Data to Save"
     }
   }
 
